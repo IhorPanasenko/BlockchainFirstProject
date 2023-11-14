@@ -1,6 +1,8 @@
 import React from "react";
 
 function MainPage () {
+    
+
     return (  
         <div>
             <h1>React</h1>
