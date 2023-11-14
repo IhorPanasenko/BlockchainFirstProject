@@ -1,0 +1,275 @@
+{
+  "contractName": "TodoList",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "taskCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.21+commit.d9974bed\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"taskCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/TodoList.sol\":\"TodoList\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/TodoList.sol\":{\"keccak256\":\"0xec546cfbc901d63abe9946d47056c8f4ee50b768ba2359fcdbc14c02d7e60f90\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ad00cf6a475f03b934d2942fd62703b3739ed22488ff1040b7b144bb08a69496\",\"dweb:/ipfs/QmfQdwzjinFWfut5WvgXT6PnBkP76o627tQcivieTwdeZQ\"]}},\"version\":1}",
+  "bytecode": "0x60806040525f80553480156011575f80fd5b50607980601d5f395ff3fe6080604052348015600e575f80fd5b50600436106026575f3560e01c8063b6cb58a514602a575b5f80fd5b60315f5481565b60405190815260200160405180910390f3fea264697066735822122011c4184890df4aba4dceebb43ec7325f9c62c7e552e65cf66206d75bf96628ae64736f6c63430008150033",
+  "deployedBytecode": "0x6080604052348015600e575f80fd5b50600436106026575f3560e01c8063b6cb58a514602a575b5f80fd5b60315f5481565b60405190815260200160405180910390f3fea264697066735822122011c4184890df4aba4dceebb43ec7325f9c62c7e552e65cf66206d75bf96628ae64736f6c63430008150033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [
+    {
+      "ast": {
+        "nativeSrc": "0:193:1",
+        "nodeType": "YulBlock",
+        "src": "0:193:1",
+        "statements": [
+          {
+            "nativeSrc": "6:3:1",
+            "nodeType": "YulBlock",
+            "src": "6:3:1",
+            "statements": []
+          },
+          {
+            "body": {
+              "nativeSrc": "115:76:1",
+              "nodeType": "YulBlock",
+              "src": "115:76:1",
+              "statements": [
+                {
+                  "nativeSrc": "125:26:1",
+                  "nodeType": "YulAssignment",
+                  "src": "125:26:1",
+                  "value": {
+                    "arguments": [
+                      {
+                        "name": "headStart",
+                        "nativeSrc": "137:9:1",
+                        "nodeType": "YulIdentifier",
+                        "src": "137:9:1"
+                      },
+                      {
+                        "kind": "number",
+                        "nativeSrc": "148:2:1",
+                        "nodeType": "YulLiteral",
+                        "src": "148:2:1",
+                        "type": "",
+                        "value": "32"
+                      }
+                    ],
+                    "functionName": {
+                      "name": "add",
+                      "nativeSrc": "133:3:1",
+                      "nodeType": "YulIdentifier",
+                      "src": "133:3:1"
+                    },
+                    "nativeSrc": "133:18:1",
+                    "nodeType": "YulFunctionCall",
+                    "src": "133:18:1"
+                  },
+                  "variableNames": [
+                    {
+                      "name": "tail",
+                      "nativeSrc": "125:4:1",
+                      "nodeType": "YulIdentifier",
+                      "src": "125:4:1"
+                    }
+                  ]
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "name": "headStart",
+                        "nativeSrc": "167:9:1",
+                        "nodeType": "YulIdentifier",
+                        "src": "167:9:1"
+                      },
+                      {
+                        "name": "value0",
+                        "nativeSrc": "178:6:1",
+                        "nodeType": "YulIdentifier",
+                        "src": "178:6:1"
+                      }
+                    ],
+                    "functionName": {
+                      "name": "mstore",
+                      "nativeSrc": "160:6:1",
+                      "nodeType": "YulIdentifier",
+                      "src": "160:6:1"
+                    },
+                    "nativeSrc": "160:25:1",
+                    "nodeType": "YulFunctionCall",
+                    "src": "160:25:1"
+                  },
+                  "nativeSrc": "160:25:1",
+                  "nodeType": "YulExpressionStatement",
+                  "src": "160:25:1"
+                }
+              ]
+            },
+            "name": "abi_encode_tuple_t_uint256__to_t_uint256__fromStack_reversed",
+            "nativeSrc": "14:177:1",
+            "nodeType": "YulFunctionDefinition",
+            "parameters": [
+              {
+                "name": "headStart",
+                "nativeSrc": "84:9:1",
+                "nodeType": "YulTypedName",
+                "src": "84:9:1",
+                "type": ""
+              },
+              {
+                "name": "value0",
+                "nativeSrc": "95:6:1",
+                "nodeType": "YulTypedName",
+                "src": "95:6:1",
+                "type": ""
+              }
+            ],
+            "returnVariables": [
+              {
+                "name": "tail",
+                "nativeSrc": "106:4:1",
+                "nodeType": "YulTypedName",
+                "src": "106:4:1",
+                "type": ""
+              }
+            ],
+            "src": "14:177:1"
+          }
+        ]
+      },
+      "contents": "{\n    { }\n    function abi_encode_tuple_t_uint256__to_t_uint256__fromStack_reversed(headStart, value0) -> tail\n    {\n        tail := add(headStart, 32)\n        mstore(headStart, value0)\n    }\n}",
+      "id": 1,
+      "language": "Yul",
+      "name": "#utility.yul"
+    }
+  ],
+  "sourceMap": "66:51:0:-:0;;;113:1;88:26;;66:51;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "66:51:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;88:26;;;;;;;;;160:25:1;;;148:2;133:18;88:26:0;;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.9.0;\n\ncontract TodoList {\n  uint public taskCount  = 0;\n}\n",
+  "sourcePath": "D:\\Igor\\University\\Course_4\\BlockChainTechnologyAndML\\PWs\\Pw23\\eth_todo_list\\contracts\\TodoList.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/TodoList.sol",
+    "exportedSymbols": {
+      "TodoList": [
+        5
+      ]
+    },
+    "id": 6,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".22",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:32:0"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "TodoList",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 5,
+        "linearizedBaseContracts": [
+          5
+        ],
+        "name": "TodoList",
+        "nameLocation": "75:8:0",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "functionSelector": "b6cb58a5",
+            "id": 4,
+            "mutability": "mutable",
+            "name": "taskCount",
+            "nameLocation": "100:9:0",
+            "nodeType": "VariableDeclaration",
+            "scope": 5,
+            "src": "88:26:0",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 2,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "88:4:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "hexValue": "30",
+              "id": 3,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "113:1:0",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_0_by_1",
+                "typeString": "int_const 0"
+              },
+              "value": "0"
+            },
+            "visibility": "public"
+          }
+        ],
+        "scope": 6,
+        "src": "66:51:0",
+        "usedErrors": [],
+        "usedEvents": []
+      }
+    ],
+    "src": "32:86:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.21+commit.d9974bed.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x06DE7A176abC5b515D5C55829ADC8536c7435cE6",
+      "transactionHash": "0x6d0b43f61ca1a1d7562b01cf014017cebb6cde0c9b21db528e9b043cf52b75a2"
+    }
+  },
+  "schemaVersion": "3.4.16",
+  "updatedAt": "2023-11-14T08:01:09.001Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
