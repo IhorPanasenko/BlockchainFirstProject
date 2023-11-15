@@ -15,8 +15,9 @@ contract TodoList {
     }
 
     mapping(uint => Task) public tasks;
+    mapping(uint => uint) public taskIndexMapping; // Mapping from task ID to task index
 
-   constructor() {
+    constructor() {
         createTask("This is the first task", "Sample Content", true);
     }
 
@@ -34,6 +35,7 @@ contract TodoList {
             _isImportant,
             false
         );
+        taskIndexMapping[totalTaskCount] = taskCount;
     }
 
     function updateTask(
@@ -43,19 +45,22 @@ contract TodoList {
         bool _isImportant,
         bool _completed
     ) public {
-        require(_taskId > 0 && totalTaskCount >= _taskId);
+        uint taskIndex = taskIndexMapping[_taskId];
+        require(taskIndex > 0 && totalTaskCount >= _taskId);
 
-        tasks[_taskId].title = _title;
-        tasks[_taskId].content = _content;
-        tasks[_taskId].isImportant = _isImportant;
-        tasks[_taskId].completed = _completed;
+        tasks[taskIndex].title = _title;
+        tasks[taskIndex].content = _content;
+        tasks[taskIndex].isImportant = _isImportant;
+        tasks[taskIndex].completed = _completed;
     }
 
     function deleteTask(uint _taskId) public {
-        require(_taskId > 0 && totalTaskCount >= _taskId);
+        uint taskIndex = taskIndexMapping[_taskId];
+        require(taskIndex > 0 && totalTaskCount >= _taskId);
 
-        tasks[_taskId] = tasks[taskCount];
+        tasks[taskIndex] = tasks[taskCount];
         delete tasks[taskCount];
+        delete taskIndexMapping[_taskId];
         taskCount--;
     }
 }
