@@ -28,7 +28,7 @@ contract TodoList {
         taskCount++;
         totalTaskCount++;
         tasks[taskCount] = Task(
-            taskCount,
+            totalTaskCount,
             _title,
             _content,
             _isImportant,
