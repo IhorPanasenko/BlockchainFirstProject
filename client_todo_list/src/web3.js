@@ -1,7 +1,7 @@
 import Web3 from "web3";
 
 const web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));
-const contractAddress = "0x21896Ec38925d005C9A1D109c9515A2B50f43eb7";
+const contractAddress = "0x25E8Cce11b4A754ef245A1750A4429bAFC420aAB";
 const abi = [
   {
     inputs: [],
