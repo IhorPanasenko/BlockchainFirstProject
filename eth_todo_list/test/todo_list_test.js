@@ -17,10 +17,10 @@ contract("TodoList", (accounts) => {
   });
 
   it("should update a task", async () => {
-    const taskId = 1; // Assuming there is at least one task in the TodoList
+    await todoListInstance.createTask("New Task Title", "New Task Content", true);
+    const taskId = 1;
 
     const originalTask = await todoListInstance.tasks(taskId);
-
     await todoListInstance.updateTask(taskId, "Updated Title", "Updated Content", false, true);
 
     const updatedTask = await todoListInstance.tasks(taskId);
@@ -31,10 +31,10 @@ contract("TodoList", (accounts) => {
   });
 
   it("should delete a task", async () => {
-    const taskId = 1; // Assuming there is at least one task in the TodoList
+    await todoListInstance.createTask("New Task Title", "New Task Content", true);
+    const taskId = 1;
 
     const initialTaskCount = await todoListInstance.taskCount();
-
     await todoListInstance.deleteTask(taskId);
 
     const updatedTaskCount = await todoListInstance.taskCount();
