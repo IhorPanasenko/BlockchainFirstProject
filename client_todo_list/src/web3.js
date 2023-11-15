@@ -1,7 +1,7 @@
 import Web3 from "web3";
 
 const web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));
-const contractAddress = "0x25E8Cce11b4A754ef245A1750A4429bAFC420aAB";
+const contractAddress = "0xFd10359C80bB6648D40D1C625850C46805219680";
 const abi = [
   {
     inputs: [],
@@ -11,6 +11,26 @@ const abi = [
   {
     inputs: [],
     name: "taskCount",
+    outputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    stateMutability: "view",
+    type: "function",
+    constant: true,
+  },
+  {
+    inputs: [
+      {
+        internalType: "uint256",
+        name: "",
+        type: "uint256",
+      },
+    ],
+    name: "taskIndexMapping",
     outputs: [
       {
         internalType: "uint256",
