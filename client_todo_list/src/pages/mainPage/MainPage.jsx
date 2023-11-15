@@ -17,6 +17,9 @@ function MainPage() {
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
   const [taskDetailsModalShow, setTaskDetailsModalShow] = useState(false);
+  const [completedTasks, setCompletedTasks] = useState([]);
+  const [notCompletedTasks, setNotCompletedTasks] = useState([]);
+
 
   useEffect(() => {
     loadTasks();
@@ -38,6 +41,8 @@ function MainPage() {
       }
 
       const loadedTasks = await Promise.all(taskPromises);
+      setNotCompletedTasks(loadedTasks.filter((task) => !task.completed));
+      setCompletedTasks(loadedTasks.filter((task) => task.completed));
       setTasks(loadedTasks);
     } catch (error) {
       console.error("Error loading tasks:", error);
@@ -70,18 +75,19 @@ function MainPage() {
       (task) => parseInt(task.id, 10) === parseInt(taskId, 10)
     );
     console.log(parseInt(taskId, 10));
-    console.log(tasks);
+    console.log(selectedTask);
     console.log(selectedTask.title);
     setNewTaskTitle(selectedTask.title);
     setNewTaskContent(selectedTask.content);
     setNewTaskIsImportant(selectedTask.isImportant);
-    setCompletionStatus(selectedTask.completionStatus);
+    setCompletionStatus(selectedTask.completed);
 
     setUpdateModalShow(true);
   };
 
   const updateTask = async () => {
     const accounts = await web3.eth.getAccounts();
+    console.log("Updating task")
 
     await todoListContract.methods
       .updateTask(
@@ -94,14 +100,15 @@ function MainPage() {
       .send({
         from: accounts[0],
         gas: 99999999,
-      });
-
-    setNewTaskTitle("");
-    setNewTaskContent("");
-    setNewTaskIsImportant(false);
-    setCompletionStatus(false);
-    setUpdateModalShow(false);
-    loadTasks();
+      }).then(()=>{
+        console.log("Then: ")
+        setNewTaskTitle("");
+        setNewTaskContent("");
+        setNewTaskIsImportant(false);
+        setCompletionStatus(false);
+        setUpdateModalShow(false);
+        loadTasks();
+      })
   };
 
   const cancelUpdateTask = () => {
@@ -134,8 +141,8 @@ function MainPage() {
     setTaskDetailsModalShow(true);
   };
 
-  const notCompletedTasks = tasks.filter((task) => !task.completed);
-  const completedTasks = tasks.filter((task) => task.completed);
+  //const notCompletedTasks = tasks.filter((task) => !task.completed);
+ // const completedTasks = tasks.filter((task) => task.completed);
 
   return (
     <div className="container mt-5">
@@ -143,7 +150,7 @@ function MainPage() {
       <Button
         variant="primary"
         onClick={() => setShowCreateModal(true)}
-        className="mb-3 p-5 pt-3 pb-3" 
+        className="mb-3 p-5 pt-3 pb-3"
       >
         Create New Task
       </Button>
@@ -190,12 +197,14 @@ function MainPage() {
                 Add Task
               </Button>
               <Button
-                    className="p-5 pt-2 pb-2"
-                    variant="info"
-                    onClick={()=>{setShowCreateModal(false)}}
-                  >
-                    Cancel
-                  </Button>
+                className="p-5 pt-2 pb-2"
+                variant="info"
+                onClick={() => {
+                  setShowCreateModal(false);
+                }}
+              >
+                Cancel
+              </Button>
             </div>
           </Form>
         </Modal.Body>
@@ -208,17 +217,19 @@ function MainPage() {
           <div className="row">
             <div className="col-md-6">
               <h2>Not Completed Tasks ({notCompletedTasks.length})</h2>
-              {notCompletedTasks.map((task) => (
+              {notCompletedTasks?.map((task) => (
                 <Card
                   key={task.id}
                   className={`mb-4 ${
                     task.isImportant ? "bg-danger" : "bg-info"
                   }`}
-                  onClick={() => openTaskDetailsModal(task)}
-                  style={{ cursor: "pointer" }}
                 >
                   <Card.Body>
-                    <div className="d-flex justify-content-center ">
+                    <div
+                      className="d-flex justify-content-center "
+                      onClick={() => openTaskDetailsModal(task)}
+                      style={{ cursor: "pointer" }}
+                    >
                       <Card.Title>{task.title}</Card.Title>
                     </div>
                     {task.isImportant && (
@@ -249,14 +260,13 @@ function MainPage() {
             <div className="col-md-6">
               <h2>Completed Tasks ({completedTasks.length})</h2>
               {completedTasks.map((task) => (
-                <Card
-                  key={task.id}
-                  className="mb-4 bg-primary"
-                  onClick={() => openTaskDetailsModal(task)}
-                  style={{ cursor: "pointer" }}
-                >
+                <Card key={task.id} className="mb-4 bg-primary">
                   <Card.Body>
-                    <div className="d-flex justify-content-center">
+                    <div
+                      className="d-flex justify-content-center"
+                      onClick={() => openTaskDetailsModal(task)}
+                      style={{ cursor: "pointer" }}
+                    >
                       <Card.Title>{task.title}</Card.Title>
                     </div>
                     {task.isImportant && (
@@ -292,7 +302,11 @@ function MainPage() {
             <Modal.Header className="bg-dark" closeButton>
               <Modal.Title>Task Details</Modal.Title>
             </Modal.Header>
-            <Modal.Body className={`${selectedTask.isImportant ? "bg-warning" : "bg-primary"}`}>
+            <Modal.Body
+              className={`${
+                selectedTask?.isImportant ? "bg-warning" : "bg-primary"
+              }`}
+            >
               {selectedTask && (
                 <div>
                   <p>Title: {selectedTask.title}</p>
