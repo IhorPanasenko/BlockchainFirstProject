@@ -60,7 +60,7 @@ contract TodoList {
 
         tasks[taskIndex] = tasks[taskCount];
         delete tasks[taskCount];
-        delete taskIndexMapping[_taskId];
+        //delete taskIndexMapping[_taskId];
         taskCount--;
     }
 }
